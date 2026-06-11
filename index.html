@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RA事業計画書 2026</title>
+  <style>
+    :root {
+      --primary: #1a3a5c;
+      --accent: #2e7dd1;
+      --accent-light: #e8f2fd;
+      --success: #1e8a5e;
+      --success-light: #e6f5ef;
+      --warning: #b45309;
+      --warning-light: #fef3cd;
+      --danger: #c0392b;
+      --text: #1f2937;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --bg: #f8fafc;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    /* ヘッダー */
+    .header {
+      background: linear-gradient(135deg, var(--primary) 0%, #2a5298 100%);
+      color: white;
+      padding: 48px 40px 40px;
+    }
+    .header-meta {
+      font-size: 12px;
+      opacity: 0.7;
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      margin-bottom: 8px;
+    }
+    .header-sub {
+      font-size: 15px;
+      opacity: 0.85;
+      margin-bottom: 24px;
+    }
+    .header-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .tag {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      letter-spacing: 0.03em;
+    }
+
+    /* メインレイアウト */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* セクション */
+    .section {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 28px;
+      overflow: hidden;
+    }
+    .section-header {
+      background: var(--primary);
+      color: white;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-header .num {
+      background: rgba(255,255,255,0.2);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .section-body {
+      padding: 24px;
+    }
+
+    /* KPIカード */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    .kpi-card {
+      background: var(--accent-light);
+      border: 1px solid #c3daf7;
+      border-radius: 10px;
+      padding: 18px 16px;
+      text-align: center;
+    }
+    .kpi-card .label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+    }
+    .kpi-card .value {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .kpi-card .unit {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* テーブル */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    thead tr {
+      background: var(--primary);
+      color: white;
+    }
+    thead th {
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    tbody tr:nth-child(even) { background: #f9fafb; }
+    tbody tr:hover { background: var(--accent-light); }
+    tbody td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .total-row {
+      background: #fff8e1 !important;
+      font-weight: 700;
+    }
+    .total-row td { border-top: 2px solid var(--warning); }
+
+    /* バッジ */
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .badge-blue { background: var(--accent-light); color: var(--accent); }
+    .badge-green { background: var(--success-light); color: var(--success); }
+    .badge-orange { background: var(--warning-light); color: var(--warning); }
+
+    /* フロー */
+    .flow {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0;
+      margin: 8px 0;
+    }
+    .flow-step {
+      background: var(--accent-light);
+      border: 1px solid #c3daf7;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+      text-align: center;
+      min-width: 100px;
+    }
+    .flow-arrow {
+      color: var(--accent);
+      font-size: 18px;
+      padding: 0 6px;
+      font-weight: 700;
+    }
+
+    /* フェーズカード */
+    .phase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .phase-card {
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .phase-card-header {
+      padding: 12px 16px;
+      font-weight: 700;
+      font-size: 13px;
+      color: white;
+    }
+    .phase1 .phase-card-header { background: #2e7dd1; }
+    .phase2 .phase-card-header { background: #1e8a5e; }
+    .phase3 .phase-card-header { background: #7c3aed; }
+    .phase-card-body {
+      padding: 14px 16px;
+      background: var(--white);
+    }
+    .phase-card-body .goal {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .checklist li::before {
+      content: "□";
+      color: var(--accent);
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* リスクテーブル */
+    .risk-row td:first-child {
+      color: var(--danger);
+      font-weight: 600;
+    }
+
+    /* フィー比較 */
+    .fee-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .fee-card {
+      border-radius: 10px;
+      border: 2px solid var(--border);
+      overflow: hidden;
+    }
+    .fee-card.highlight { border-color: var(--accent); }
+    .fee-card-header {
+      background: var(--bg);
+      padding: 10px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .fee-card.highlight .fee-card-header {
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+    .fee-card-body {
+      padding: 16px;
+    }
+    .fee-amount {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .fee-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* 架電体制テーブル */
+    .role-table td:first-child { font-weight: 600; }
+
+    /* 注釈 */
+    .note {
+      background: var(--warning-light);
+      border-left: 3px solid var(--warning);
+      padding: 10px 14px;
+      border-radius: 0 6px 6px 0;
+      font-size: 12px;
+      color: var(--warning);
+      margin-top: 12px;
+    }
+    .note-blue {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      color: #1a4f8c;
+    }
+
+    /* シミュレーションのハイライト */
+    .sim-highlight { color: var(--success); font-weight: 700; }
+    .sim-total { font-size: 15px; }
+
+    /* フッター */
+    .footer {
+      text-align: center;
+      padding: 32px 24px;
+      color: var(--text-muted);
+      font-size: 12px;
+      border-top: 1px solid var(--border);
+      margin-top: 12px;
+    }
+
+    @media (max-width: 680px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .phase-grid { grid-template-columns: 1fr; }
+      .fee-grid { grid-template-columns: 1fr; }
+      .flow { flex-direction: column; }
+      .flow-arrow { transform: rotate(90deg); }
+      .header { padding: 32px 20px; }
+      .header h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<div class="header">
+  <div class="header-meta">RA BUSINESS PLAN　｜　作成日：2026年6月11日</div>
+  <h1>RA（リクルーティングアドバイザー）事業計画書</h1>
+  <div class="header-sub">エンジニア採用特化型・シェアリングモデル　2026年6月〜12月</div>
+  <div class="header-tags">
+    <span class="tag">エンジニア職特化</span>
+    <span class="tag">フィー40万円〜</span>
+    <span class="tag">稼働上限10社</span>
+    <span class="tag">シェアリング展開</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 1. 目標KPI -->
+  <div class="section">
+    <div class="section-header">
+      <div class="num">1</div>
+      <h2>目標KPI（最終ゴール：12月末）</h2>
+    </div>
+    <div class="section-body">
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="label">月間決定件数</div>
+          <div class="value">5</div>
+          <div class="unit">件 / 月</div>
+        </div>
+        <div class="kpi-card">
+          <div class="label">フィー単価（目標）</div>
+          <div class="value">50<span style="font-size:16px">万</span></div>
+          <div class="unit">円 / 件（最終目標）</div>
+        </div>
+        <div class="kpi-card">
+          <div class="label">稼働企業数（上限）</div>
+          <div class="value">10</div>
+          <div class="unit">社</div>
+        </div>
+        <div class="kpi-card">
+          <div class="label">期間累計売上</div>
+          <div class="value">940<span style="font-size:16px">万</span></div>
+          <div class="unit">円（6〜12月）</div>
+        </div>
+      </div>
+      <div class="note note-blue">
+        稼働企業数を10社に絞ることで、管理品質と関係深度を維持。50社体制は非効率と判断し、少数精鋭モデルで展開する。
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. ターゲット定義 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="num">2</div>
+      <h2>ターゲット企業定義</h2>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30%">項目</th>
+            <th>条件</th>
+            <th style="width:25%">備考</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>対象職種</strong></td>
+            <td>エンジニア職（開発・インフラ・データ・QA 等）</td>
+            <td><span class="badge badge-blue">基本条件</span></td>
+          </tr>
+          <tr>
+            <td><strong>月給水準</strong></td>
+            <td>月給 40万円以上（年収480万円〜）</td>
+            <td><span class="badge badge-green">フィー基準と連動</span></td>
+          </tr>
+          <tr>
+            <td><strong>年間採用枠</strong></td>
+            <td>10名以上（理想：30名以上）</td>
+            <td><span class="badge badge-orange">決定ポテンシャル重視</span></td>
+          </tr>
+          <tr>
+            <td><strong>企業フェーズ</strong></td>
+            <td>成長期スタートアップ〜中堅IT企業</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note">
+        年間30名採用規模の企業であれば月2〜3件の決定ポテンシャルがあり、1社でも大きな売上源となりうる。
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. フィー体系 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="num">3</div>
+      <h2>フィー体系（2種類）</h2>
+    </div>
+    <div class="section-body">
+      <div class="fee-grid">
+        <div class="fee-card highlight">
+          <div class="fee-card-header">タイプA　一律固定フィー</div>
+          <div class="fee-card-body">
+            <div class="fee-amount">40万円〜<br><span style="font-size:18px">／件（固定）</span></div>
+            <div class="fee-desc">
+              企業が求人単価を一律で設定しているケース。<br>
+              候補者の年収に関わらず、採用1件につき固定で受領。<br>
+              低年収帯でも安定フィーが見込める反面、高年収帯では割安になることも。
+            </div>
+          </div>
+        </div>
+        <div class="fee-card">
+          <div class="fee-card-header">タイプB　年収連動フィー</div>
+          <div class="fee-card-body">
+            <div class="fee-amount">年収 × 20%<br><span style="font-size:18px">／件（変動）</span></div>
+            <div class="fee-desc">
+              候補者の内定年収に対して20%を成功報酬として受領。<br>
+              例：年収500万円 → 100万円<br>
+              例：年収600万円 → 120万円<br>
+              高スキル・高年収人材ほど高フィーが期待できる。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>フェーズ</th>
+            <th>期間</th>
+            <th>フィー水準（目標）</th>
+            <th>戦略</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge-blue">初期</span></td>
+            <td>〜9月</td>
+            <td>固定：40万円 ／ 変動：年収×20%（下限40万）</td>
+            <td>実績・関係構築を優先。フィー交渉より信頼獲得</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-orange">移行期</span></td>
+            <td>10〜11月</td>
+            <td>固定：45万円へ引上げ交渉 ／ 変動：維持</td>
+            <td>実績データを根拠にフィーアップ交渉開始</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-green">成熟期</span></td>
+            <td>12月〜</td>
+            <td>固定：50万円 ／ 変動：年収×20%（実質50万超え狙い）</td>
+            <td>エンジニア特化の差別化でプレミアムポジション確立</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note note-blue" style="margin-top:14px">
+        <strong>フィー判断基準：</strong>固定か変動かは企業ごとに確認・記録する。変動型で交渉する場合も「最低保証40万円」の設定を交渉ポイントとして活用する。
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 獲得フロー -->
+  <div class="section">
+    <div class="section-header">
+      <div class="num">4</div>
+      <h2>獲得フロー</h2>
+    </div>
+    <div class="section-body">
+      <div class="flow">
+        <div class="flow-step">架電<br>（テレアポ）</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">アポ獲得</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">企業面談<br>ニーズ確認</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">求人登録<br>条件確定</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">シェアリング<br>会社へ共有</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">選考・FB<br>収集</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">データ蓄積<br>他社展開</div>
+      </div>
+      <div class="note note-blue" style="margin-top:16px">
+        シェアリング先：エージェントマッチ、サーカス 等。自社CA稼働ゼロでも決定が生まれる構造を構築する。
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. 架電体制・役割分担 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="num">5</div>
+      <h2>架電体制・役割分担</h2>
+    </div>
+    <div class="section-body">
+      <table class="role-table">
+        <thead>
+          <tr>
+            <th>役割</th>
+            <th>担当</th>
+            <th>業務内容</th>
+            <th>報酬設計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>テレアポ実施</td>
+            <td>外部委託（金谷さん）</td>
+            <td>リスト選定・架電・アポ獲得</td>
+            <td>アポ成果報酬 ＋ 求人登録ボーナス</td>
+          </tr>
+          <tr>
+            <td>企業面談・クロージング</td>
+            <td>社内RA担当</td>
+            <td>ニーズ深掘り・条件交渉・求人登録</td>
+            <td>社内給与 ＋ 決定インセンティブ</td>
+          </tr>
+          <tr>
+            <td>シェアリング管理</td>
+            <td>社内担当</td>
+            <td>共有先への求人展開・フィー管理</td>
+            <td>社内給与</td>
+          </tr>
+          <tr>
+            <td>データ分析・FB整理</td>
+            <td>社内担当</td>
+            <td>通過・不通過の要因分析、ペルソナ更新</td>
+            <td>社内給与</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note">
+        外部委託報酬は「アポ取得」「求人登録完了」「決定時」の3段階インセンティブ設計を推奨。モチベーション維持と品質担保を両立する。
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. シェアリングモデル -->
+  <div class="section">
+    <div class="section-header">
+      <div class="num">6</div>
+      <h2>シェアリングモデル</h2>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr>
+            <th>項目</th>
+            <th>内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>シェアリング先</strong></td>
+            <td>エージェントマッチ、サーカス、その他エージェント会社（段階的拡充）</td>
+          </tr>
+          <tr>
+            <td><strong>フィー設定</strong></td>
+            <td>企業フィー（固定40万 or 年収×20%）をそのまま適用</td>
+          </tr>
+          <tr>
+            <td><strong>折半比率</strong></td>
+            <td>自社 60% ／ シェアリング先 40%（交渉によって調整）</td>
+          </tr>
+          <tr>
+            <td><strong>メリット</strong></td>
+            <td>自社CA稼働ゼロ・求人の面出し範囲を最大化・決定確率の向上</td>
+          </tr>
+          <tr>
+            <td><strong>展開タイミング</strong></td>
+            <td>求人登録完了後、即日〜3営業日以内に共有開始</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 7. 月次KPI目標 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="num">7</div>
+      <h2>月次KPI目標</h2>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr>
+            <th>KPI項目</th>
+            <th>6月</th>
+            <th>7月</th>
+            <th>8月</th>
+            <th>9月</th>
+            <th>10月</th>
+            <th>11月</th>
+            <th>12月</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>架電件数（月）</strong></td>
+            <td>200</td>
+            <td>200</td>
+            <td>200</td>
+            <td>200</td>
+            <td>150</td>
+            <td>150</td>
+            <td>150</td>
+          </tr>
+          <tr>
+            <td><strong>アポ獲得数</strong></td>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+            <td>4</td>
+            <td>4</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td><strong>求人登録件数</strong></td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>5</td>
+            <td>4</td>
+            <td>4</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td><strong>稼働企業数（累計）</strong></td>
+            <td>3</td>
+            <td>5</td>
+            <td>8</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td><strong>決定件数</strong></td>
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note">
+        稼働企業数は9月時点で10社上限に達する想定。10月以降は新規開拓より既存深耕・フィーアップ交渉にシフトする。
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. フェーズ別アクションプラン -->
+  <div class="section">
+    <div class="section-header">
+      <div class="num">8</div>
+      <h2>フェーズ別アクションプラン</h2>
+    </div>
+    <div class="section-body">
+      <div class="phase-grid">
+        <div class="phase-card phase1">
+          <div class="phase-card-header">Phase 1　立ち上げ期<br>6月〜7月</div>
+          <div class="phase-card-body">
+            <div class="goal">目標：稼働企業5社確保・シェアリング初稼働</div>
+            <ul class="checklist">
+              <li>テレアポリスト作成（エンジニア採用・年間10名以上）</li>
+              <li>金谷さんとの業務委託契約・KPI・報酬設計の確定</li>
+              <li>企業面談トーク・ヒアリングシートの整備</li>
+              <li>シェアリングパートナーとの契約確認・連携開始</li>
+              <li>求人管理シート・FBフォーマットの作成</li>
+              <li>フィー体系（固定 or 変動）を企業ごとに記録開始</li>
+            </ul>
+          </div>
+        </div>
+        <div class="phase-card phase2">
+          <div class="phase-card-header">Phase 2　実績構築期<br>8月〜9月</div>
+          <div class="phase-card-body">
+            <div class="goal">目標：稼働10社・月3件以上決定</div>
+            <ul class="checklist">
+              <li>選考フィードバックを毎週収集・整理</li>
+              <li>「通過しやすい候補者像」を企業別にドキュメント化</li>
+              <li>シェアリング先への情報共有精度を高め書類通過率向上</li>
+              <li>フィーアップ交渉開始（固定40万→45万）</li>
+              <li>変動型企業では高年収候補者の送客を意識的に強化</li>
+            </ul>
+          </div>
+        </div>
+        <div class="phase-card phase3">
+          <div class="phase-card-header">Phase 3　スケール期<br>10月〜12月</div>
+          <div class="phase-card-body">
+            <div class="goal">目標：月5件決定・単価50万円達成</div>
+            <ul class="checklist">
+              <li>蓄積データをもとに「他社展開用求人提案資料」を作成</li>
+              <li>新規シェアリングパートナーへの展開（2〜3社追加）</li>
+              <li>固定フィー50万円超えの企業比率50%以上を目標に</li>
+              <li>変動型は年収600万以上の候補者送客を優先</li>
+              <li>2027年事業計画への橋渡し（体制・単価・社数の見直し）</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. 売上シミュレーション -->
+  <div class="section">
+    <div class="section-header">
+      <div class="num">9</div>
+      <h2>売上シミュレーション（6月〜12月）</h2>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr>
+            <th>月</th>
+            <th>決定件数</th>
+            <th>フィー単価（目安）</th>
+            <th>月間売上</th>
+            <th>備考</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>6月</td>
+            <td>0件</td>
+            <td>—</td>
+            <td>0万円</td>
+            <td>立ち上げ期・求人登録注力</td>
+          </tr>
+          <tr>
+            <td>7月</td>
+            <td>1件</td>
+            <td>40万円</td>
+            <td>40万円</td>
+            <td>初決定目標</td>
+          </tr>
+          <tr>
+            <td>8月</td>
+            <td>2件</td>
+            <td>40万円</td>
+            <td>80万円</td>
+            <td>固定・変動混在でも単価下限40万を維持</td>
+          </tr>
+          <tr>
+            <td>9月</td>
+            <td>3件</td>
+            <td>40万円</td>
+            <td>120万円</td>
+            <td>稼働10社到達・フィーアップ交渉開始</td>
+          </tr>
+          <tr>
+            <td>10月</td>
+            <td>5件</td>
+            <td>45万円</td>
+            <td>225万円</td>
+            <td>フィー引上げ後の初月</td>
+          </tr>
+          <tr>
+            <td>11月</td>
+            <td>5件</td>
+            <td>45万円</td>
+            <td>225万円</td>
+            <td>シェアリング拡大による決定数安定</td>
+          </tr>
+          <tr>
+            <td>12月</td>
+            <td>5件</td>
+            <td>50万円</td>
+            <td>250万円</td>
+            <td>単価50万円ポジション確立</td>
+          </tr>
+          <tr class="total-row">
+            <td class="sim-total"><strong>合計</strong></td>
+            <td class="sim-total"><strong class="sim-highlight">21件</strong></td>
+            <td class="sim-total">—</td>
+            <td class="sim-total"><strong class="sim-highlight">940万円</strong></td>
+            <td>6〜12月累計</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note note-blue" style="margin-top:14px">
+        <strong>固定フィー企業の扱い：</strong>固定40万円企業でも、送客候補者の年収帯が高いほど企業側の採用優先度が上がる傾向がある。フィー単価と採用スピードのバランスを見て、優先企業を定期的に見直す。
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. リスクと対策 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="num">10</div>
+      <h2>リスクと対策</h2>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30%">リスク</th>
+            <th>対策</th>
+          </tr>
+        </thead>
+        <tbody class="risk-row">
+          <tr>
+            <td>アポ獲得率が低い</td>
+            <td>リストの精度向上・トーク改善・架電時間帯の最適化（午前10〜11時、午後2〜4時を中心に）</td>
+          </tr>
+          <tr>
+            <td>求人登録後に企業がクローズ</td>
+            <td>複数求人を同時保有・月次で担当者との温度感確認を実施</td>
+          </tr>
+          <tr>
+            <td>固定フィー企業で選考通過率が低い</td>
+            <td>選考FBを早期収集し「通過ペルソナ」を更新。シェアリング先への情報共有精度を高める</td>
+          </tr>
+          <tr>
+            <td>フィーアップ交渉が難航</td>
+            <td>実績（決定数・通過率・スピード）を数値で提示し、価値を可視化してから交渉</td>
+          </tr>
+          <tr>
+            <td>シェアリング先との関係悪化</td>
+            <td>情報共有の透明性維持・クレーム対応の迅速化・フィー入金の確実な管理</td>
+          </tr>
+          <tr>
+            <td>変動型フィーで低年収決定が続く</td>
+            <td>送客候補者の年収帯を事前にコントロール。低年収送客は最低保証交渉の対象にする</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  RA事業計画書　2026年6月11日作成　｜　計画期間：2026年6月〜12月
+</div>
+
+</body>
+</html>
