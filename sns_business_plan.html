@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram SNS運用 事業計画書</title>
+  <style>
+    :root {
+      --primary: #1a1a2e;
+      --accent: #e94560;
+      --accent2: #f5a623;
+      --bg: #f8f9fc;
+      --card: #ffffff;
+      --text: #2d2d2d;
+      --text-light: #6b7280;
+      --border: #e5e7eb;
+      --green: #10b981;
+      --blue: #3b82f6;
+      --purple: #8b5cf6;
+      --orange: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    /* ===== COVER ===== */
+    .cover {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: white;
+      padding: 80px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(233,69,96,0.3) 0%, transparent 70%);
+    }
+
+    .cover::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%);
+    }
+
+    .cover-label {
+      display: inline-block;
+      background: rgba(233,69,96,0.2);
+      border: 1px solid rgba(233,69,96,0.5);
+      color: #f9a8b8;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+
+    .cover h1 {
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .cover h1 span {
+      color: var(--accent);
+    }
+
+    .cover-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 40px;
+    }
+
+    .cover-meta {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .cover-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .cover-meta-item .label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .cover-meta-item .value {
+      font-size: 14px;
+      color: white;
+      font-weight: 600;
+    }
+
+    .cover-badges {
+      display: flex;
+      gap: 12px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+
+    /* ===== LAYOUT ===== */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== SECTION ===== */
+    .section {
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section:last-child { border-bottom: none; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .section-number {
+      width: 36px; height: 36px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .section-title span {
+      color: var(--accent);
+    }
+
+    /* ===== CARD ===== */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-title .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* ===== TABLE ===== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th {
+      background: var(--primary);
+      color: white;
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    th:first-child { border-radius: 0; }
+
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #f9fafb; }
+    tr:nth-child(even) td { background: #fafafa; }
+    tr:nth-child(even):hover td { background: #f3f4f6; }
+
+    /* ===== FUNNEL ===== */
+    .funnel {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .funnel-step {
+      display: flex;
+      align-items: stretch;
+      gap: 16px;
+    }
+
+    .funnel-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 48px;
+      flex-shrink: 0;
+    }
+
+    .funnel-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+      color: white;
+      font-weight: 700;
+    }
+
+    .funnel-line {
+      width: 2px;
+      background: var(--border);
+      flex: 1;
+      margin: 4px 0;
+      min-height: 24px;
+    }
+
+    .funnel-content {
+      flex: 1;
+      padding-bottom: 24px;
+    }
+
+    .funnel-content-inner {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .funnel-step-label {
+      font-size: 11px;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    .funnel-step-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .funnel-step-desc {
+      font-size: 13px;
+      color: var(--text-light);
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .timeline-month {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .timeline-month-header {
+      padding: 14px 16px;
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .timeline-month.june .timeline-month-header { background: linear-gradient(135deg, #e94560, #c23152); }
+    .timeline-month.july .timeline-month-header { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+    .timeline-month.august .timeline-month-header { background: linear-gradient(135deg, #10b981, #059669); }
+    .timeline-month.sept .timeline-month-header { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+
+    .timeline-month-subtitle {
+      font-size: 11px;
+      opacity: 0.85;
+      margin-top: 2px;
+    }
+
+    .timeline-month-body {
+      padding: 16px;
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-item::before {
+      content: '▸';
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ===== KPI GRID ===== */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+    }
+
+    .kpi-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .kpi-card.highlight {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, #fff5f6, #ffffff);
+    }
+
+    .kpi-icon { font-size: 24px; margin-bottom: 8px; }
+
+    .kpi-label {
+      font-size: 11px;
+      color: var(--text-light);
+      margin-bottom: 6px;
+    }
+
+    .kpi-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .kpi-sub {
+      font-size: 11px;
+      color: var(--text-light);
+      margin-top: 4px;
+    }
+
+    /* ===== TEMPLATE BOX ===== */
+    .template-box {
+      background: #1e1e2e;
+      color: #cdd6f4;
+      border-radius: 10px;
+      padding: 20px 24px;
+      font-family: 'SF Mono', 'Courier New', monospace;
+      font-size: 13px;
+      line-height: 1.8;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .template-box .template-label {
+      position: absolute;
+      top: 12px; right: 14px;
+      font-size: 10px;
+      color: #6c7086;
+      font-family: sans-serif;
+      letter-spacing: 0.05em;
+    }
+
+    .template-box .highlight-text { color: #a6e3a1; }
+    .template-box .link-text { color: #89b4fa; }
+    .template-box .placeholder { color: #cba6f7; }
+
+    /* ===== STEP BADGE ===== */
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    /* ===== PROS CONS ===== */
+    .pros-cons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .pros-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .cons-box {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .pros-box h4 { color: #16a34a; margin-bottom: 10px; font-size: 13px; }
+    .cons-box h4 { color: #ea580c; margin-bottom: 10px; font-size: 13px; }
+
+    .pros-cons-item {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    .pros-cons-item::before {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .pros-box .pros-cons-item::before { content: '✓'; color: #16a34a; }
+    .cons-box .pros-cons-item::before { content: '△'; color: #ea580c; }
+
+    /* ===== FLOW ARROW ===== */
+    .flow-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 16px 0;
+    }
+
+    .flow-node {
+      background: var(--primary);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .flow-arrow {
+      color: var(--text-light);
+      font-size: 18px;
+    }
+
+    /* ===== CHECKLIST ===== */
+    .checklist {
+      list-style: none;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .checklist li:last-child { border-bottom: none; }
+
+    .check-box {
+      width: 18px; height: 18px;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .priority-high .check-box { border-color: var(--accent); }
+    .priority-mid .check-box { border-color: var(--orange); }
+
+    .priority-tag {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .priority-high .priority-tag { background: #fef2f2; color: var(--accent); }
+    .priority-mid .priority-tag { background: #fffbeb; color: var(--orange); }
+
+    /* ===== INFO BOX ===== */
+    .info-box {
+      background: #eff6ff;
+      border-left: 4px solid var(--blue);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 13px;
+    }
+
+    .warning-box {
+      background: #fefce8;
+      border-left: 4px solid var(--orange);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 13px;
+    }
+
+    .success-box {
+      background: #f0fdf4;
+      border-left: 4px solid var(--green);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 13px;
+    }
+
+    .info-box strong, .warning-box strong, .success-box strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* ===== WEEK TABLE ===== */
+    .week-table {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .week-label {
+      background: #f3f4f6;
+      padding: 14px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-light);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+    }
+
+    .week-content {
+      padding: 14px;
+      font-size: 13px;
+      border-bottom: 1px solid var(--border);
+      background: white;
+    }
+
+    .week-label:last-of-type,
+    .week-content:last-child {
+      border-bottom: none;
+    }
+
+    /* ===== FORM DESIGN ===== */
+    .form-question {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+    }
+
+    .form-q-num {
+      font-size: 11px;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+
+    .form-q-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .form-options {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-light);
+    }
+
+    .form-option::before {
+      content: '○';
+      color: var(--border);
+      font-size: 16px;
+    }
+
+    /* ===== PAGE BREAK ===== */
+    @media print {
+      .page-break { page-break-before: always; }
+      .cover { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--primary);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+    }
+
+    /* ===== HASHTAG ===== */
+    .hashtag-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hashtag-tag {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .hashtag-tag.big { background: #fef2f2; color: var(--accent); }
+    .hashtag-tag.mid { background: #eff6ff; color: var(--blue); }
+    .hashtag-tag.small { background: #f0fdf4; color: var(--green); }
+    .hashtag-tag.brand { background: #faf5ff; color: var(--purple); }
+
+    /* ===== SPREADSHEET ===== */
+    .ss-table {
+      font-size: 11px;
+      overflow-x: auto;
+      display: block;
+    }
+
+    .ss-table table { min-width: 700px; }
+
+    .ss-table th {
+      background: #4b5563;
+      font-size: 10px;
+      padding: 8px 10px;
+    }
+
+    .ss-table td {
+      padding: 7px 10px;
+      font-size: 11px;
+    }
+
+    .status-done { color: var(--green); font-weight: 600; }
+    .status-pending { color: var(--orange); font-weight: 600; }
+
+    @media (max-width: 600px) {
+      .cover { padding: 40px 24px; }
+      .cover h1 { font-size: 24px; }
+      .pros-cons { grid-template-columns: 1fr; }
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .timeline { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== COVER ===== -->
+<div class="cover">
+  <div class="container">
+    <div class="cover-label">BUSINESS PLAN 2026</div>
+    <h1>Instagram SNS運用<br><span>事業計画書</span></h1>
+    <p class="cover-sub">人材紹介事業における求職者集客の設計・運用方針</p>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <span class="label">策定日</span>
+        <span class="value">2026年6月12日</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="label">運用開始</span>
+        <span class="value">2026年7月</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="label">主要プラットフォーム</span>
+        <span class="value">Instagram</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="label">集客目的</span>
+        <span class="value">人材紹介 求職者獲得</span>
+      </div>
+    </div>
+    <div class="cover-badges">
+      <span class="badge">📱 リール・フィード投稿</span>
+      <span class="badge">💬 DM起点の集客</span>
+      <span class="badge">📋 Googleフォーム連携</span>
+      <span class="badge">📅 日程調整導線</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ===== SECTION 1: 事業概要 ===== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2 class="section-title">事業概要・<span>コンテンツ戦略</span></h2>
+    </div>
+
+    <div class="success-box">
+      <strong>運用方針</strong>
+      Instagramを主軸とし、<strong>求職者の信頼獲得 → DM流入 → Googleフォーム → 面談申込</strong>のファネルを構築する。公式LINEへの誘導は行わず、Instagram内でのコミュニケーションを完結させてジャンプ率による離脱を防ぐ。<br><br>
+      <strong>投稿フォーマットの役割分担</strong>：<strong>リール＝感想・お客様の声 専用</strong>、<strong>フィードカルーセル＝ノウハウ系 専用</strong>と明確に分ける。「すべての投稿」タブでは両方が表示されるが、リールタブを開くと感想コンテンツのみが並び、サービスへの信頼感を一点集中で伝えられる構造にする。
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;">
+      <div class="card">
+        <div class="card-title"><span class="dot"></span>コンテンツ軸①｜リアルな声</div>
+        <p style="font-size:13px; color: var(--text-light); margin-bottom: 10px;">弊社を通じて内定承諾・サービス満足いただいた方の実体験をリール編集して発信</p>
+        <table>
+          <tr><th>項目</th><th>内容</th></tr>
+          <tr><td>形式</td><td>リール動画（15〜45秒）</td></tr>
+          <tr><td>効果</td><td>社会的証明・信頼形成</td></tr>
+          <tr><td>目標</td><td>月2〜3本</td></tr>
+          <tr><td>素材</td><td>利用者ヒアリング・テキスト証言</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot"></span>コンテンツ軸②｜転職ノウハウ</div>
+        <p style="font-size:13px; color: var(--text-light); margin-bottom: 10px;">転職に関する専門的なTips・情報を発信し、リード獲得につなげる</p>
+        <table>
+          <tr><th>項目</th><th>内容</th></tr>
+          <tr><td>形式</td><td>フィードカルーセル（横スクロール）</td></tr>
+          <tr><td>効果</td><td>検索流入・フォロワー獲得</td></tr>
+          <tr><td>目標</td><td>月4〜6本</td></tr>
+          <tr><td>素材</td><td>業界知識・面接対策・書類Tips</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 2: 集客ファネル ===== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2 class="section-title">集客ファネル<span>全体設計</span></h2>
+    </div>
+
+    <div class="funnel">
+      <div class="funnel-step">
+        <div class="funnel-left">
+          <div class="funnel-icon" style="background: #e94560;">📱</div>
+          <div class="funnel-line"></div>
+        </div>
+        <div class="funnel-content">
+          <div class="funnel-content-inner">
+            <div class="funnel-step-label">STEP 1 — 発見</div>
+            <div class="funnel-step-title">リール・フィード投稿の視聴</div>
+            <div class="funnel-step-desc">ノウハウ系・お客様の声コンテンツでターゲットの目に留まる。末尾テロップ・キャプションでDMを促す。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="funnel-step">
+        <div class="funnel-left">
+          <div class="funnel-icon" style="background: #f5a623;">👤</div>
+          <div class="funnel-line"></div>
+        </div>
+        <div class="funnel-content">
+          <div class="funnel-content-inner">
+            <div class="funnel-step-label">STEP 2 — 興味</div>
+            <div class="funnel-step-title">プロフィールへのアクセス</div>
+            <div class="funnel-step-desc">bio にサービス概要・実績数値・CTAを凝縮。ハイライトで「転職の流れ」「よくある質問」を設置し信頼を醸成する。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="funnel-step">
+        <div class="funnel-left">
+          <div class="funnel-icon" style="background: #3b82f6;">💬</div>
+          <div class="funnel-line"></div>
+        </div>
+        <div class="funnel-content">
+          <div class="funnel-content-inner">
+            <div class="funnel-step-label">STEP 3 — アクション</div>
+            <div class="funnel-step-title">DM送信</div>
+            <div class="funnel-step-desc">ユーザーが自発的にDMを送ってくる。「まだ迷っている段階でもOK」というメッセージで心理的ハードルを下げる。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="funnel-step">
+        <div class="funnel-left">
+          <div class="funnel-icon" style="background: #8b5cf6;">📋</div>
+          <div class="funnel-line"></div>
+        </div>
+        <div class="funnel-content">
+          <div class="funnel-content-inner">
+            <div class="funnel-step-label">STEP 4 — ヒアリング</div>
+            <div class="funnel-step-title">Googleフォーム送付・回答</div>
+            <div class="funnel-step-desc">DM返信時にGoogleフォームのリンクを添付。「約1分」と明記し回答を促す。フォームはアプリ内ブラウザで開くため離脱リスク低。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="funnel-step">
+        <div class="funnel-left">
+          <div class="funnel-icon" style="background: #10b981;">📅</div>
+          <div class="funnel-line" style="display:none;"></div>
+        </div>
+        <div class="funnel-content">
+          <div class="funnel-content-inner">
+            <div class="funnel-step-label">STEP 5 — 商談</div>
+            <div class="funnel-step-title">日程調整 → 無料面談</div>
+            <div class="funnel-step-desc">フォーム回答確認後、DMで3候補日を提示（初期）またはCalendlyリンクを送付（拡大期）。オンライン30分の面談へ誘導。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top: 8px;">
+      <strong>💡 Googleフォームとアプリ遷移について</strong>
+      GoogleフォームのリンクはInstagramのアプリ内ブラウザで開くため、LINEのように完全に別アプリへ移動する感覚はなく、離脱リスクは比較的低い。公式LINEとの最大の違いは「顧客リスト資産化」の有無であり、現フェーズではDM→フォームの設計で問題ない。月間相談件数が20〜30件を超えた段階でLINE・CRM導入を検討する。
+    </div>
+  </div>
+
+  <!-- ===== SECTION 3: DM文面テンプレート ===== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2 class="section-title">DM対応<span>テンプレート集</span></h2>
+    </div>
+
+    <div class="step-badge">STEP 1｜DM受信直後の返信</div>
+    <div class="template-box">
+      <span class="template-label">コピー用テンプレート</span>
+      こんにちは！DMいただきありがとうございます。<br><br>
+      <span class="placeholder">◯◯エージェント</span>の<span class="placeholder">[担当者名]</span>です。<br>
+      まずは転職に関する現状を簡単に教えていただけますか？<br><br>
+      <span class="highlight-text">↓ こちらのフォームに約1分でご回答いただけます</span><br>
+      <span class="link-text">[Googleフォームリンク]</span><br><br>
+      ご回答後、すぐに最適な日程をご提案します！
+    </div>
+    <p style="font-size: 12px; color: var(--text-light); margin-bottom: 24px;">ポイント：「1分」と明示して心理的ハードルを下げる。担当者名を入れて人間味を演出。フォーム後に何が起きるか事前に伝える。</p>
+
+    <div class="step-badge">STEP 2｜フォーム未回答者へのフォロー（翌日〜2日後）</div>
+    <div class="template-box">
+      <span class="template-label">コピー用テンプレート</span>
+      先日はDMありがとうございました！<br><br>
+      フォームのご回答、お時間あるときにいただけると嬉しいです。<br>
+      転職について「まだ迷っている」「情報収集中」という段階でも<br>
+      <span class="highlight-text">全く問題ありません。気軽にどうぞ。</span><br><br>
+      <span class="link-text">[Googleフォームリンク]</span>
+    </div>
+    <p style="font-size: 12px; color: var(--text-light); margin-bottom: 24px;">ポイント：1回のみ送る。「迷っている段階でもOK」でハードルを下げる。</p>
+
+    <div class="step-badge">STEP 3｜フォーム回答後の返信（日程提示）</div>
+    <div class="template-box">
+      <span class="template-label">コピー用テンプレート</span>
+      フォームへのご回答ありがとうございます！<br><br>
+      内容を確認しました。<br>
+      <span class="placeholder">[名前]</span>さんのご状況にあわせてご相談できればと思います。<br><br>
+      <span class="highlight-text">以下の日程でご都合はいかがでしょうか？</span><br>
+      （オンライン・30分程度）<br><br>
+      ・<span class="placeholder">◯月◯日（◯）◯時〜</span><br>
+      ・<span class="placeholder">◯月◯日（◯）◯時〜</span><br>
+      ・<span class="placeholder">◯月◯日（◯）◯時〜</span><br><br>
+      ご希望の日時をお知らせください！
+    </div>
+    <p style="font-size: 12px; color: var(--text-light);">拡大期はこのメッセージにCalendlyリンクを添付して日程調整を自動化できる。</p>
+  </div>
+
+  <!-- ===== SECTION 4: Googleフォーム設計 ===== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2 class="section-title">Googleフォーム<span>設計</span></h2>
+    </div>
+
+    <div class="card" style="margin-bottom: 20px;">
+      <div style="text-align: center; padding: 8px 0 16px;">
+        <div style="font-size: 13px; color: var(--text-light); margin-bottom: 4px;">フォームタイトル</div>
+        <div style="font-size: 18px; font-weight: 700; color: var(--primary);">転職相談 ヒアリングフォーム</div>
+        <div style="font-size: 13px; color: var(--text-light); margin-top: 8px;">転職に関するご状況を教えてください。いただいた情報をもとに、最適な形でご提案・日程調整をご連絡します。<br>所要時間：約1分</div>
+      </div>
+    </div>
+
+    <div class="form-question">
+      <div class="form-q-num">質問 1 / 4</div>
+      <div class="form-q-text">現在の履歴書はありますか？</div>
+      <div class="form-options">
+        <div class="form-option">ある（最新版）</div>
+        <div class="form-option">あるが古い</div>
+        <div class="form-option">ない</div>
+      </div>
+    </div>
+
+    <div class="form-question">
+      <div class="form-q-num">質問 2 / 4</div>
+      <div class="form-q-text">転職の希望時期はいつ頃ですか？</div>
+      <div class="form-options">
+        <div class="form-option">3ヶ月以内</div>
+        <div class="form-option">半年以内</div>
+        <div class="form-option">1年以内</div>
+        <div class="form-option">まだ決めていない（情報収集中）</div>
+      </div>
+    </div>
+
+    <div class="form-question">
+      <div class="form-q-num">質問 3 / 4</div>
+      <div class="form-q-text">転職後の職種について相談したいことはありますか？</div>
+      <div class="form-options">
+        <div class="form-option">ある（方向性が決まっていない）</div>
+        <div class="form-option">ある（特定の職種に絞りたい）</div>
+        <div class="form-option">ない（職種は決まっている）</div>
+      </div>
+    </div>
+
+    <div class="form-question">
+      <div class="form-q-num">質問 4 / 4</div>
+      <div class="form-q-text">ご連絡用のInstagramアカウント名（@から始まるID）</div>
+      <div style="margin-top: 10px; height: 36px; background: #f3f4f6; border-radius: 6px; border: 1px solid var(--border);"></div>
+      <div style="font-size: 11px; color: var(--text-light); margin-top: 6px;">※ DMを送っていただいた際のInstagram IDをご記入ください。フォーム回答とDMを紐付けるために使用します。</div>
+    </div>
+
+    <div class="info-box">
+      <strong>フォーム設定で必ず行うこと</strong>
+      ① 回答後メッセージ：「ご回答ありがとうございます。内容確認後、DMにてご連絡します（通常1営業日以内）」<br>
+      ② メール通知：回答のたびにメールが届くよう設定（フォーム → 回答タブ → メール通知ON）<br>
+      ③ スプレッドシート連携：回答を自動蓄積し、顧客管理台帳として活用
+    </div>
+
+    <div style="margin-top: 20px;">
+      <div class="card-title" style="margin-bottom: 12px;"><span class="dot"></span>スプレッドシート管理項目（例）</div>
+      <div class="ss-table">
+        <table>
+          <tr>
+            <th>Instagramアカウント</th>
+            <th>DM受信日</th>
+            <th>フォーム回答日</th>
+            <th>履歴書</th>
+            <th>希望時期</th>
+            <th>職種相談</th>
+            <th>面談日</th>
+            <th>ステータス</th>
+          </tr>
+          <tr>
+            <td>@sample_user1</td>
+            <td>7/3</td>
+            <td>7/4</td>
+            <td>あり（古い）</td>
+            <td>半年以内</td>
+            <td>あり</td>
+            <td>7/10</td>
+            <td><span class="status-done">面談済</span></td>
+          </tr>
+          <tr>
+            <td>@sample_user2</td>
+            <td>7/5</td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td><span class="status-pending">未回答フォロー待</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 5: 月次アクションプラン ===== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h2 class="section-title">月次<span>アクションプラン</span></h2>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-month june">
+        <div class="timeline-month-header">
+          6月
+          <div class="timeline-month-subtitle">仕込み・設計期間</div>
+        </div>
+        <div class="timeline-month-body">
+          <div class="timeline-item">アカウント・プロフィール設計</div>
+          <div class="timeline-item">ベンチマーク5件調査</div>
+          <div class="timeline-item">ハッシュタグリスト作成</div>
+          <div class="timeline-item">Googleフォーム作成・設定</div>
+          <div class="timeline-item">DMテンプレート整備</div>
+          <div class="timeline-item">リール動画撮影・編集（10本）</div>
+          <div class="timeline-item">投稿カレンダー（7〜9月）策定</div>
+        </div>
+      </div>
+      <div class="timeline-month july">
+        <div class="timeline-month-header">
+          7月
+          <div class="timeline-month-subtitle">ソフトローンチ</div>
+        </div>
+        <div class="timeline-month-body">
+          <div class="timeline-item">週2〜3投稿ペースで開始</div>
+          <div class="timeline-item">リール中心で発信</div>
+          <div class="timeline-item">エンゲージメント反応観察</div>
+          <div class="timeline-item">ハイライト設置・整備</div>
+          <div class="timeline-item">DM対応フロー確立</div>
+          <div class="timeline-item">フォロワー・DM数の記録開始</div>
+        </div>
+      </div>
+      <div class="timeline-month august">
+        <div class="timeline-month-header">
+          8月
+          <div class="timeline-month-subtitle">最適化</div>
+        </div>
+        <div class="timeline-month-body">
+          <div class="timeline-item">反応の良いコンテンツを分析・強化</div>
+          <div class="timeline-item">フィード・リールそれぞれの反応を比較</div>
+          <div class="timeline-item">フォロワー属性の確認</div>
+          <div class="timeline-item">DM→フォーム→面談化率の集計</div>
+        </div>
+      </div>
+      <div class="timeline-month sept">
+        <div class="timeline-month-header">
+          9月以降
+          <div class="timeline-month-subtitle">スケールアップ</div>
+        </div>
+        <div class="timeline-month-body">
+          <div class="timeline-item">月間目標の更新・引き上げ</div>
+          <div class="timeline-item">Calendly導入検討</div>
+          <div class="timeline-item">リール広告テスト開始検討</div>
+          <div class="timeline-item">TikTokへのクロス展開検討</div>
+          <div class="timeline-item">月20件超でLINE/CRM導入を検討</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px;">
+      <div class="card">
+        <div class="card-title"><span class="dot"></span>6月 週次スケジュール詳細</div>
+        <div class="week-table">
+          <div class="week-label">第1週<br>6/8〜</div>
+          <div class="week-content">アカウント名・bio・プロフィール画像の最終決定 ／ ベンチマーク5アカウントのリストアップと分析 ／ Googleフォーム作成・テスト送信</div>
+          <div class="week-label">第2週<br>6/15〜</div>
+          <div class="week-content">ノウハウ系リール撮影・編集（5本目標） ／ ハッシュタグリスト30〜40個の作成 ／ DMテンプレート3種の文面確定</div>
+          <div class="week-label">第3週<br>6/22〜</div>
+          <div class="week-content">利用者ヒアリング実施 ／ リアルな声コンテンツ制作（3〜5本） ／ ハイライトカバー・構成の準備</div>
+          <div class="week-label">第4週<br>6/29〜</div>
+          <div class="week-content">コンテンツ最終確認・品質チェック ／ 7〜9月の投稿カレンダー完成 ／ スプレッドシート管理台帳の設置</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 6: アカウント設計 ===== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <h2 class="section-title">アカウント設計<span>詳細</span></h2>
+    </div>
+
+    <!-- BIO文 -->
+    <div class="card" style="margin-bottom: 20px;">
+      <div class="card-title"><span class="dot"></span>BIO文（バイオ文）とは</div>
+      <p style="font-size:13px; color: var(--text-light); margin-bottom: 16px;">プロフィールページに表示される説明文（最大150文字）。アカウントに初めて訪れたユーザーが最初に目にする唯一のコピーで、フォロー・DM送信に直結する最重要テキスト。</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <div>
+          <div style="font-size: 12px; font-weight: 700; color: var(--text-light); margin-bottom: 8px;">構成要素（3段構造）</div>
+          <table>
+            <tr><th>#</th><th>要素</th><th>例文</th></tr>
+            <tr><td>①</td><td>何をするアカウントか</td><td>転職を完全サポート</td></tr>
+            <tr><td>②</td><td>実績・数字（信頼性）</td><td>内定率◯%・累計◯名支援</td></tr>
+            <tr><td>③</td><td>CTA（行動促進）</td><td>転職相談はDMへ（無料）</td></tr>
+          </table>
+        </div>
+        <div>
+          <div style="font-size: 12px; font-weight: 700; color: var(--text-light); margin-bottom: 8px;">BIO文 案（コピー用）</div>
+          <div style="background: #1e1e2e; color: #cdd6f4; padding: 14px 20px; border-radius: 8px; font-size: 13px; font-family: monospace; line-height: 2;">
+            ✅ 転職をトータルサポート<br>
+            📊 内定率<span style="color:#cba6f7;">◯</span>% ｜ 累計<span style="color:#cba6f7;">◯</span>名支援<br>
+            「迷っている段階」でも相談OK<br>
+            ↓ <span style="color:#a6e3a1;">転職相談はDMへ（無料）</span>
+          </div>
+          <div style="font-size: 11px; color: var(--text-light); margin-top: 6px;">◯部分に実績数字を入れる。数字がない場合は「実績多数」等でも可。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- リンクインバイオ -->
+    <div class="card" style="margin-bottom: 20px;">
+      <div class="card-title"><span class="dot"></span>リンクインバイオとは</div>
+      <p style="font-size:13px; color: var(--text-light); margin-bottom: 12px;">Instagramのプロフィールに設置できる唯一のクリッカブルURL。リール・フィード投稿の中では外部リンクをタップできないため、ここが唯一の公式な外部導線になる。</p>
+      <div class="info-box" style="margin-top: 0; margin-bottom: 16px;">
+        <strong>🔗 なぜ1URLにまとめる必要があるか</strong>
+        Instagramはプロフィールに設置できるリンクが原則1つのみ。フォーム・Calendly・HPなど複数の導線を持たせたい場合は <strong>Linktree（無料）</strong> などの中継ページを使い、1URLから目的地を選べる構造にする。
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <div>
+          <div style="font-size: 12px; font-weight: 700; color: var(--text-light); margin-bottom: 8px;">リンクインバイオページの構成例</div>
+          <table>
+            <tr><th>ボタン名</th><th>リンク先</th></tr>
+            <tr><td>📋 転職相談フォーム</td><td>Googleフォーム</td></tr>
+            <tr><td>📅 面談を予約する</td><td>Calendly（拡大期）</td></tr>
+            <tr><td>🏢 サービス紹介・会社HP</td><td>自社サイト</td></tr>
+          </table>
+        </div>
+        <div>
+          <div style="font-size: 12px; font-weight: 700; color: var(--text-light); margin-bottom: 8px;">使い方のポイント</div>
+          <ul style="font-size: 13px; color: var(--text-light); padding-left: 16px; line-height: 2.1;">
+            <li>リール・フィードのキャプションで「プロフのリンクへ」と誘導</li>
+            <li>ストーリーズのリンクスタンプと併用すると効果大</li>
+            <li>Linktreeは無料プランで複数リンクの設置が可能</li>
+            <li>プロフ画面にURLが表示されるため短くわかりやすいURLが望ましい</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+      <div class="card">
+        <div class="card-title"><span class="dot"></span>プロフィール設計</div>
+        <table>
+          <tr><th>要素</th><th>内容・方針</th></tr>
+          <tr><td>アカウント名</td><td>「転職」「キャリア」が伝わる名称</td></tr>
+          <tr><td>bio（160文字）</td><td>①何をするアカウントか ②実績数値 ③CTA（DM誘導）</td></tr>
+          <tr><td>プロフ画像</td><td>ロゴ or 信頼感のある顔出し写真</td></tr>
+          <tr><td>リンク</td><td>Linktree等でフォーム・HP等をまとめる</td></tr>
+          <tr><td>ハイライト</td><td>「転職の流れ」「FAQ」「お客様の声」を設置</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot"></span>投稿フォーマット</div>
+        <table>
+          <tr><th>形式</th><th>用途・目標</th></tr>
+          <tr><td>リール（9:16）</td><td>感想・お客様の声 <strong>専用</strong>。15〜45秒。テロップ必須。リールタブには感想のみ表示される設計</td></tr>
+          <tr><td>フィードカルーセル</td><td>ノウハウ系 <strong>専用</strong>。複数枚スライドで保存率を狙う。すべての投稿に表示</td></tr>
+          <tr><td>ストーリーズ</td><td>DM誘導・Q&A・リンクスタンプ活用</td></tr>
+        </table>
+        <div style="margin-top: 12px; font-size: 13px; color: var(--text-light);">
+          推奨投稿時間：12時台・19〜22時台<br>
+          推奨曜日：火・木・土
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="dot"></span>ハッシュタグ戦略</div>
+      <div style="margin-bottom: 12px;">
+        <div style="font-size: 12px; color: var(--text-light); margin-bottom: 8px;">ビッグタグ（100万〜）｜2〜3個</div>
+        <div class="hashtag-grid">
+          <span class="hashtag-tag big">#転職</span>
+          <span class="hashtag-tag big">#キャリアアップ</span>
+          <span class="hashtag-tag big">#就職活動</span>
+        </div>
+      </div>
+      <div style="margin-bottom: 12px;">
+        <div style="font-size: 12px; color: var(--text-light); margin-bottom: 8px;">ミドルタグ（10〜100万）｜5〜7個</div>
+        <div class="hashtag-grid">
+          <span class="hashtag-tag mid">#転職活動中</span>
+          <span class="hashtag-tag mid">#転職ノウハウ</span>
+          <span class="hashtag-tag mid">#転職エージェント</span>
+          <span class="hashtag-tag mid">#キャリア相談</span>
+          <span class="hashtag-tag mid">#転職体験談</span>
+        </div>
+      </div>
+      <div style="margin-bottom: 12px;">
+        <div style="font-size: 12px; color: var(--text-light); margin-bottom: 8px;">スモールタグ（1〜10万）｜3〜5個</div>
+        <div class="hashtag-grid">
+          <span class="hashtag-tag small">#転職エージェントおすすめ</span>
+          <span class="hashtag-tag small">#第二新卒転職</span>
+          <span class="hashtag-tag small">#20代転職</span>
+          <span class="hashtag-tag small">#転職成功</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size: 12px; color: var(--text-light); margin-bottom: 8px;">ブランドタグ｜1個（例）</div>
+        <div class="hashtag-grid">
+          <span class="hashtag-tag brand">#◯◯キャリア</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 16px;">
+      <div class="card-title"><span class="dot"></span>投稿CTA設計（フォーム導線を前提）</div>
+      <div style="margin-bottom: 16px;">
+        <div style="font-size: 12px; font-weight: 700; color: var(--text-light); margin-bottom: 6px;">リール末尾テロップ（案）</div>
+        <div style="background: #1e1e2e; color: #cdd6f4; padding: 14px 20px; border-radius: 8px; font-size: 13px; font-family: monospace;">
+          転職の相談はDMへ<br>
+          ↓<br>
+          <span style="color: #a6e3a1;">簡単なフォームをお送りします</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size: 12px; font-weight: 700; color: var(--text-light); margin-bottom: 6px;">キャプション末尾（固定文）</div>
+        <div style="background: #1e1e2e; color: #cdd6f4; padding: 14px 20px; border-radius: 8px; font-size: 13px; font-family: monospace; line-height: 1.9;">
+          ━━━━━━━━━━━━━━<br>
+          転職について相談したい方へ<br><br>
+          このアカウントにDMを送ってください。<br>
+          <span style="color: #a6e3a1;">簡単なヒアリングフォームをお送りし、<br>
+          あなたの状況にあわせてご提案します。</span><br><br>
+          まだ転職するか迷っている段階でもOKです。<br>
+          ━━━━━━━━━━━━━━
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 7: KPI・数値目標 ===== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <h2 class="section-title">KPI・<span>数値目標</span></h2>
+    </div>
+
+    <div class="warning-box">
+      <strong>⚠️ 初期フェーズの優先指標</strong>
+      運用開始〜3ヶ月はフォロワー数よりも「DM件数」「プロフィールアクセス数」「フォーム回答率」を優先的に観測する。フォロワーが少なくてもDMが来ている状態が理想。
+    </div>
+
+    <div style="margin: 20px 0;">
+      <div class="card-title" style="margin-bottom: 12px;"><span class="dot"></span>フォロワー数 目標値</div>
+      <table>
+        <tr>
+          <th>時期</th>
+          <th>目標フォロワー数</th>
+          <th>重点指標</th>
+        </tr>
+        <tr>
+          <td>7月末（1ヶ月）</td>
+          <td>30〜80人</td>
+          <td>DM月3件</td>
+        </tr>
+        <tr>
+          <td>8月末（2ヶ月）</td>
+          <td>80〜200人</td>
+          <td>DM月5件以上・面談化率50%</td>
+        </tr>
+        <tr>
+          <td>9月末（3ヶ月）</td>
+          <td>200〜400人</td>
+          <td>DM月10件以上</td>
+        </tr>
+        <tr>
+          <td>12月末（6ヶ月）</td>
+          <td>500〜1,000人</td>
+          <td>DM月20件・Calendly導入検討</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card highlight">
+        <div class="kpi-icon">💬</div>
+        <div class="kpi-label">月間DM件数（最重要）</div>
+        <div class="kpi-value">3件〜</div>
+        <div class="kpi-sub">7月目標（ミニマム）。最優先KPI</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">📋</div>
+        <div class="kpi-label">フォーム回答率</div>
+        <div class="kpi-value">60%↑</div>
+        <div class="kpi-sub">DM受信→フォーム回答の割合</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">📅</div>
+        <div class="kpi-label">面談化率</div>
+        <div class="kpi-value">50%↑</div>
+        <div class="kpi-sub">フォーム回答→面談設定の割合</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">💾</div>
+        <div class="kpi-label">投稿保存数</div>
+        <div class="kpi-value">10件↑</div>
+        <div class="kpi-sub">ノウハウ系コンテンツの質の指標</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">📊</div>
+        <div class="kpi-label">エンゲージメント率</div>
+        <div class="kpi-value">3〜5%</div>
+        <div class="kpi-sub">（いいね+保存+コメント）÷リーチ</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">👤</div>
+        <div class="kpi-label">プロフアクセス数</div>
+        <div class="kpi-value">週単位</div>
+        <div class="kpi-sub">リール→プロフへの遷移数を記録</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 8: ベンチマーク ===== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">8</div>
+      <h2 class="section-title">ベンチマーク<span>設定</span></h2>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+      <div class="card">
+        <div class="card-title"><span class="dot"></span>カテゴリ①</div>
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 8px;">同業（人材紹介会社）</div>
+        <div style="font-size: 12px; color: var(--text-light);">
+          競合のInstagram運用状況を把握。コンテンツ構成・フォロワー規模・CTAの設計を分析する。
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot"></span>カテゴリ②</div>
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 8px;">転職ノウハウ系インフル</div>
+        <div style="font-size: 12px; color: var(--text-light);">
+          フォロワー数1万〜10万規模のキャリア・転職系アカウント。伸びているコンテンツ形式・コメント傾向を調査。
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot"></span>カテゴリ③</div>
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 8px;">成長期アカウント参照</div>
+        <div style="font-size: 12px; color: var(--text-light);">
+          フォロワー1,000〜5,000規模の類似アカウント。現実的な到達目標として参照し、投稿頻度・形式を確認。
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="dot"></span>ベンチマーク調査で確認する項目</div>
+      <table>
+        <tr>
+          <th>調査項目</th>
+          <th>確認内容</th>
+          <th>活用方法</th>
+        </tr>
+        <tr>
+          <td>エンゲージメント率</td>
+          <td>いいね÷フォロワー数</td>
+          <td>自社目標値の設定根拠に</td>
+        </tr>
+        <tr>
+          <td>リール再生数</td>
+          <td>平均再生数の規模感</td>
+          <td>コンテンツ質の比較基準に</td>
+        </tr>
+        <tr>
+          <td>プロフィール設計</td>
+          <td>bio文・CTA・ハイライト構成</td>
+          <td>自社プロフ設計の参考に</td>
+        </tr>
+        <tr>
+          <td>コメント傾向</td>
+          <td>どんな悩み・質問が集まるか</td>
+          <td>コンテンツネタ・DM文面の参考に</td>
+        </tr>
+        <tr>
+          <td>投稿頻度・曜日</td>
+          <td>週何本・どの時間帯に投稿しているか</td>
+          <td>投稿カレンダー設計の参考に</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 9: その他の流入経路 ===== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">9</div>
+      <h2 class="section-title">DM以外の<span>流入経路</span></h2>
+    </div>
+
+    <table style="margin-bottom: 20px;">
+      <tr>
+        <th>流入経路</th>
+        <th>内容</th>
+        <th>優先度</th>
+        <th>備考</th>
+      </tr>
+      <tr>
+        <td><strong>ストーリーズ リンクスタンプ</strong></td>
+        <td>ストーリーズにフォームや面談申込ページへのリンクを直接貼れる（フォロワー数問わず利用可）</td>
+        <td style="color: var(--accent); font-weight:700;">★★★ 必須</td>
+        <td>最も離脱が少ない誘導方法</td>
+      </tr>
+      <tr>
+        <td><strong>リンクインバイオ</strong></td>
+        <td>Linktree等で1URLから複数導線（フォーム・HP・FAQ）に振り分け</td>
+        <td style="color: var(--accent); font-weight:700;">★★★ 必須</td>
+        <td>リール内で「プロフのURLから」と誘導</td>
+      </tr>
+      <tr>
+        <td><strong>コメント欄</strong></td>
+        <td>コメントへの返信時に「プロフのリンクへ」「DMください」を添える。固定コメントとして設定</td>
+        <td style="color: var(--orange); font-weight:700;">★★☆ 推奨</td>
+        <td>コメントが来たら即対応</td>
+      </tr>
+      <tr>
+        <td><strong>Instagram広告</strong></td>
+        <td>リールを広告として配信。20〜35歳・転職検討中でターゲティング</td>
+        <td style="color: var(--green); font-weight:700;">★☆☆ 将来</td>
+        <td>9月以降・予算確保後に検討</td>
+      </tr>
+      <tr>
+        <td><strong>TikTokクロス展開</strong></td>
+        <td>InstagramリールをそのままTikTokにも転用。TikTokからInstagramへの誘導</td>
+        <td style="color: var(--green); font-weight:700;">★☆☆ 将来</td>
+        <td>リソースに余裕が出たら対応</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ===== SECTION 10: 日次運用フロー ===== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">10</div>
+      <h2 class="section-title">日次<span>運用フロー</span></h2>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="dot"></span>毎日の作業（目安5〜10分）</div>
+      <div class="funnel">
+        <div class="funnel-step">
+          <div class="funnel-left">
+            <div class="funnel-icon" style="background: #e94560; width:36px; height:36px; font-size:14px;">1</div>
+            <div class="funnel-line"></div>
+          </div>
+          <div class="funnel-content">
+            <div class="funnel-content-inner">
+              <div class="funnel-step-title" style="font-size:13px;">DM受信確認 → STEP1テンプレ送信</div>
+              <div class="funnel-step-desc">新着DMを確認し、初回連絡者にはテンプレート1を送付。Googleフォームリンクを添付する。</div>
+            </div>
+          </div>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-left">
+            <div class="funnel-icon" style="background: #3b82f6; width:36px; height:36px; font-size:14px;">2</div>
+            <div class="funnel-line"></div>
+          </div>
+          <div class="funnel-content">
+            <div class="funnel-content-inner">
+              <div class="funnel-step-title" style="font-size:13px;">フォーム新規回答の確認</div>
+              <div class="funnel-step-desc">メール通知またはスプレッドシートで新規回答を確認。回答済みの方にSTEP3テンプレ（日程提示）を送付。</div>
+            </div>
+          </div>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-left">
+            <div class="funnel-icon" style="background: #f59e0b; width:36px; height:36px; font-size:14px;">3</div>
+            <div class="funnel-line" style="display:none;"></div>
+          </div>
+          <div class="funnel-content">
+            <div class="funnel-content-inner">
+              <div class="funnel-step-title" style="font-size:13px;">未回答者へのフォローDM</div>
+              <div class="funnel-step-desc">DM後2日経過しフォーム未回答の方にSTEP2フォローを1回のみ送付。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 11: 優先アクションチェックリスト ===== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">11</div>
+      <h2 class="section-title">6月中の<span>優先アクション</span></h2>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div class="card">
+        <div class="card-title"><span class="dot"></span>優先度 高（今週中に着手）</div>
+        <ul class="checklist">
+          <li class="priority-high"><span class="check-box"></span><span class="priority-tag">高</span>プロフィール・bio・アカウント名の最終決定</li>
+          <li class="priority-high"><span class="check-box"></span><span class="priority-tag">高</span>Googleフォームの作成・テスト送信</li>
+          <li class="priority-high"><span class="check-box"></span><span class="priority-tag">高</span>DMテンプレート3種の文面確定</li>
+          <li class="priority-high"><span class="check-box"></span><span class="priority-tag">高</span>ベンチマーク5アカウントのリストアップ</li>
+          <li class="priority-high"><span class="check-box"></span><span class="priority-tag">高</span>スプレッドシート管理台帳の設置</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot"></span>優先度 中（6月中に完了）</div>
+        <ul class="checklist">
+          <li class="priority-mid"><span class="check-box"></span><span class="priority-tag">中</span>リール動画撮影・編集（10本）</li>
+          <li class="priority-mid"><span class="check-box"></span><span class="priority-tag">中</span>ハッシュタグリスト作成（30〜40個）</li>
+          <li class="priority-mid"><span class="check-box"></span><span class="priority-tag">中</span>7〜9月の投稿カレンダー策定</li>
+          <li class="priority-mid"><span class="check-box"></span><span class="priority-tag">中</span>ストーリーズ リンクスタンプの設置</li>
+          <li class="priority-mid"><span class="check-box"></span><span class="priority-tag">中</span>Linktreeページの作成・プロフに設置</li>
+          <li class="priority-mid"><span class="check-box"></span><span class="priority-tag">中</span>利用者ヒアリング実施・素材確保</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="container">
+    Instagram SNS運用 事業計画書 ｜ 策定日：2026年6月12日 ｜ 運用開始：2026年7月
+  </div>
+</div>
+
+</body>
+</html>
